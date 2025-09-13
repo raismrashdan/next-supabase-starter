@@ -1,54 +1,106 @@
-# MVP Starter (Next.js + Supabase)
+# 🚀 Next + Supabase MVP Starter
 
-Product‑agnostic starter for a marketing site and gated app. Australian English spelling. Zero‑local: GitHub + Vercel + Supabase.
+> *“Because reinventing boilerplate is so 2020.”*  
 
-## Stack
-- Next.js 14 (App Router), TypeScript, pnpm
-- Supabase (Auth + Postgres + Storage, RLS)
-- Tailwind CSS + shadcn‑style primitives (copy‑in)
-- React Hook Form + Zod
-- Resend + React Email
-- Plausible (optional)
-- Biome (formatter/linter), Playwright (smoke tests)
-- GitHub Actions (lint, e2e, migrate), Dev Container
+A product-agnostic starter kit to ship your **landing page + webapp MVP** in record time.  
+No local setup. No yak-shaving. Just vibes, commits, and deploys. ✨  
 
-## Quick start
-1. Create a Supabase project.
-2. In Supabase **SQL Editor**, run `sql/0001_init.sql`.
-3. Create a GitHub repo and push this code.
-4. Add GitHub Secret `SUPABASE_DB_URL` (Direct Connection string).
-5. Import the repo into Vercel. Set env vars:
+---
+
+## 🧩 What’s Inside
+
+- **Next.js 14** (App Router, Server Components, Server Actions)
+- **Supabase** (Postgres + Auth + Storage + RLS)
+- **Tailwind CSS** + shadcn-style UI primitives
+- **Forms** with React Hook Form + Zod ✅
+- **Emails** via Resend + React Email 📧
+- **Analytics** with Plausible (optional)
+- **Zero-local workflow**: GitHub → Vercel → Supabase
+- **Developer QoL**:  
+  - Biome (formatter/linter)  
+  - Playwright (smoke tests)  
+  - GitHub Actions (lint, e2e, migrate)  
+  - Dev Container for Codespaces 🐳  
+
+---
+
+## ⚡ Quick Start
+
+1. 🍳 **Supabase**: create a project, run [`sql/0001_init.sql`](./sql/0001_init.sql) in the SQL Editor.
+2. 🐙 **GitHub**: create a repo, push this code, add secret `SUPABASE_DB_URL`.
+3. ▲ **Vercel**: import the repo, add env vars:
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - `RESEND_API_KEY` (optional for emails)
-   - `EMAIL_FROM` (e.g., `Brand <hello@your-domain.com>`)
-   - `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` (optional)
-6. Open the Preview URL. `/waitlist` works without auth. `/app/dashboard` redirects to `/login`.
+   - `RESEND_API_KEY` *(optional for emails)*
+   - `EMAIL_FROM` *(e.g., `Brand <hello@domain.com>`)*
+   - `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` *(optional)*
+4. 🎉 Visit your shiny new Preview URL.  
+   - `/waitlist` works for anyone.  
+   - `/app/dashboard` sends freeloaders to `/login`.  
 
-## Development without local machine
-- Use GitHub Web Editor or Codespaces. Commits create Vercel Previews.
-- CI: `lint` on PRs; `e2e` on PRs; `migrate` applies SQL on `main`.
+---
 
-## Theming
-- Edit HSL tokens in `styles/globals.css` (`--primary`, etc.).
-- All components reference variables, so palette swaps are trivial.
+## 🎨 Theming
 
-## Auth
-- Magic link (`/login`) sends an email via Supabase. Callback handled at `/auth/callback`.
-- `requireUser()` protects `(app)` routes. Secrets never exposed to client.
+- Edit `styles/globals.css` → HSL tokens like `--primary`.
+- Change one colour and boom 💥 → instant rebrand.  
 
-## Emails
-- `emails/welcome.tsx` and server action `sendWelcome`. Requires `RESEND_API_KEY` and `EMAIL_FROM`.
+---
 
-## Analytics
-- If `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` is set, marketing layout loads the Plausible script and you can send events via `window.plausible?.()`.
+## 🔐 Auth
 
-## Tests
-- `pnpm dlx playwright install --with-deps`
-- `pnpm test:e2e`
+- `/login` → enter email → get magic link. 🪄
+- `/auth/callback` handles the rest.
+- `(app)` routes protected by `requireUser()` → freeloaders get punted.
 
-## Environment variables
-See `.env.example`.
+---
 
-## Licence
-MIT. Replace as needed.
+## 📬 Emails
+
+- Template at `emails/welcome.tsx`.
+- `sendWelcome(to)` server action uses Resend + React Email.  
+- Works best when you actually *set* `RESEND_API_KEY`.  
+
+---
+
+## 📊 Analytics
+
+- Add `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` → Plausible script auto-loads.  
+- Track vibes with `window.plausible?.("JoinWaitlistClicked")`.
+
+---
+
+## 🧪 Tests
+
+```bash
+pnpm dlx playwright install --with-deps
+pnpm test:e2e
+```
+
+Checks:
+- Landing page actually lands.
+- Dashboard actually dashboards (for logged-in users).  
+
+---
+
+## ⚙️ Environment Variables
+
+See [`.env.example`](./.env.example). Copy, fill, profit.  
+
+---
+
+## 📝 Licence
+
+MIT.  
+Steal it, remix it, break it, ship it. Just don’t blame us when your waitlist form fills up with your mum’s email.  
+
+---
+
+## ✨ Final Words
+
+If you:
+- Love building MVPs 💡  
+- Hate boilerplate 😤  
+- Want to *vibe-code* your way into production 💃  
+
+…this repo is your new best mate. Cheers! 🍻
