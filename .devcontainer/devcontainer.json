@@ -1,0 +1,14 @@
+{
+  "name": "web",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" }
+  },
+  "postCreateCommand": "corepack enable && pnpm i",
+  "customizations": {
+    "vscode": {
+      "extensions": ["biomejs.biome", "esbenp.prettier-vscode"]
+    }
+  },
+  "forwardPorts": [3000]
+}
