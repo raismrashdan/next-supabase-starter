@@ -1,7 +1,7 @@
 import * as React from "react"
 
 type SectionProps = React.HTMLAttributes<HTMLElement> & {
-  as?: keyof JSX.IntrinsicElements
+  as?: keyof HTMLElementTagNameMap
   width?: "narrow" | "default" | "wide" | "full"
   pad?: "none" | "sm" | "md" | "lg"
 }
@@ -45,4 +45,3 @@ export function Section({
     </Tag>
   )
 }
-
