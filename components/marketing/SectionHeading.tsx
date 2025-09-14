@@ -1,5 +1,3 @@
-import * as React from "react"
-
 type Props = {
   eyebrow?: string
   title: string
@@ -24,4 +22,3 @@ export function SectionHeading({ eyebrow, title, subtitle, center }: Props) {
     </header>
   )
 }
-
