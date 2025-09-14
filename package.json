@@ -8,7 +8,9 @@
     "start": "next start",
     "test:e2e": "playwright test",
     "lint": "biome ci .",
-    "format": "biome format --write ."
+    "format": "biome format --write .",
+    "styles:guard": "node scripts/check-untokened-classes.mjs",
+    "pretest:e2e": "npm run styles:guard"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

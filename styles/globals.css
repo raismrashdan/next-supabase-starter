@@ -4,6 +4,11 @@
 
 @layer base {
   :root {
+    /* NOTE FOR AI/CLI IMPORTS (e.g., 21st.dev):
+       Do NOT use raw Tailwind brand colours (bg-blue-500, text-gray-600, etc.).
+       Always map to these tokenised classes via Tailwind: 
+       bg-background, text-foreground, bg-card, text-muted-foreground, bg-primary, etc.
+       Provide dark: variants when contrast might drop. */
     --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;
     --card: 0 0% 100%;
