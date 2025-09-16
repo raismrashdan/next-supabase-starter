@@ -8,7 +8,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { submitWaitlist } from "@/app/actions/submit-waitlist"
 
-const Schema = z.object({ email: z.string().email() })
+const Schema = z.object({
+  email: z.string().email(),
+  honeypot: z.string().optional(), // Honeypot field
+})
 type Values = z.infer<typeof Schema>
 
 export function WaitlistForm() {
@@ -22,6 +25,7 @@ export function WaitlistForm() {
       onSubmit={handleSubmit((values) => {
         const fd = new FormData()
         fd.set("email", values.email)
+        fd.set("honeypot", values.honeypot || "")
         start(async () => {
           const r = await submitWaitlist(null, fd)
           setMsg(r.ok ? "Thanks — you’re on the list." : (r.error ?? "Error"))
@@ -30,6 +34,9 @@ export function WaitlistForm() {
       })}
     >
       <Input placeholder="you@example.com" {...register("email")} />
+      <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+        <Input type="text" tabIndex={-1} {...register("honeypot")} />
+      </div>
       <Button type="submit" disabled={pending}>Join</Button>
       {msg && <span className="text-sm text-muted-foreground ml-2">{msg}</span>}
     </form>
